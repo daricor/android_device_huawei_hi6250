@@ -1,0 +1,6 @@
+type hiscoutmanager, domain;
+type hiscoutmanager_exec, exec_type, file_type;
+
+init_daemon_domain(hiscoutmanager)
+
+

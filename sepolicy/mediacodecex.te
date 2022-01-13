@@ -1,0 +1,2 @@
+allow mediacodec properties_device:file r_file_perms;
+allow mediacodec kernel_devicetree:file r_file_perms;

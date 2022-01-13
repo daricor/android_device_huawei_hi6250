@@ -1,0 +1,5 @@
+type thermal-daemon, domain;
+type thermal-daemon_exec, exec_type, file_type;
+
+init_daemon_domain(thermal-daemon)
+

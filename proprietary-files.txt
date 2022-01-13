@@ -3,47 +3,33 @@
 #
 
 # Audio
-vendor/lib/hw/audio.primary.hisi.so:vendor/lib/hw/audio.primary.hi6250.so
 vendor/lib/libasd.so
 vendor/lib/libaudio_custom.so
 vendor/lib/libmax98925.so
-vendor/lib/libsmartpakit.so
 vendor/lib/libtas2560.so
 vendor/lib/libtfa9895.so
-vendor/lib64/libtuner553.so
-vendor/lib64/hw/audio.primary.hisi.so:vendor/lib64/hw/audio.primary.hi6250.so
 vendor/lib64/libasd.so
 vendor/lib64/libaudio_custom.so
 vendor/lib64/libmax98925.so
-vendor/lib64/libsmartpakit.so
 vendor/lib64/libtas2560.so
 vendor/lib64/libtfa9895.so
-vendor/lib64/libtuner553.so
 
 # Audio Effects
-vendor/lib/soundfx/libhuaweiprocessing.so
 vendor/lib/soundfx/liboffloadvisualizer.so
-vendor/lib64/soundfx/libhuaweiprocessing.so
 vendor/lib64/soundfx/liboffloadvisualizer.so
 
 # Bluetooth
 vendor/etc/bluetooth/bt_vendor.conf
 
 # Camera
-vendor/bin/CameraDaemon
 vendor/lib/hw/camera.hi6250.so
 vendor/lib/hwcam/hwcam.ddt.so
-vendor/lib/hwcam/hwcam.services.so
 vendor/lib/libHWCamCfgSvr.so
 vendor/lib64/hw/camera.hi6250.so
 vendor/lib64/hwcam/hwcam.ddt.so
-vendor/lib64/hwcam/hwcam.services.so
 vendor/lib64/libHWCamCfgSvr.so
 
 # Connectivity
-vendor/bin/oam_hisi
-vendor/bin/octty
-vendor/bin/start_connectivity_hisi
 vendor/lib/libc_sec_hisi_connectivity.so
 vendor/lib/libpf_customize_hisi.so
 vendor/lib/libpf_oneimage_hisi.so
@@ -74,39 +60,19 @@ vendor/firmware/ts/venus_synaptics_VENS11130_boe.img
 vendor/firmware/ts/venus_synaptics_VENS11140_ebbg.img
 vendor/firmware/ts/venus_synaptics_VENS18100_lg.img
 vendor/firmware/BCM4345C0_003.001.025.0033.0000_Generic.hcd
-vendor/firmware/bfgx_and_wifi_cfg
-vendor/firmware/bfgx_cfg
-vendor/firmware/CPU_RAM_SCHED.bin
-vendor/firmware/CPU_RAM_WBS.bin
-vendor/firmware/cr4_asic.bin
-vendor/firmware/cr4_regmem.bin
-vendor/firmware/cr4_regmem_u1.bin
-vendor/firmware/emmc_emer_fw.bin
 vendor/firmware/fw_bcm4334_hw_2ant.bin
 vendor/firmware/fw_bcm4334_test_2ant.bin
 vendor/firmware/fw_bcm43455_apsta_hw.bin
 vendor/firmware/fw_bcm43455_hw.bin
 vendor/firmware/fw_bcm43455_test_hw_apsta.bin
 vendor/firmware/hifi_6402_2spk.img
-vendor/firmware/hifi_6402_2wake.img
 vendor/firmware/hifi_6402.img
-vendor/firmware/hifi_6402_tas2smartpa.img
-vendor/firmware/hifi_6402_tas2smartpa_no_wakeup_aec.img
-vendor/firmware/hifi_6402_tas4smartpa.img
-vendor/firmware/hifi_6402_tas4smartpa_no_wakeup_aec.img
 vendor/firmware/isp_bw.elf
 vendor/firmware/isp_dts.img
 vendor/firmware/isp_fw.elf
-vendor/firmware/libpn548ad_fw_10_01_1A_prod_slalm_64bits.so
-vendor/firmware/libpn548ad_fw_10.01.1C_64bits.so
-vendor/firmware/libpn548ad_fw.so
-vendor/firmware/libpn551_fw_10_05_03_64bits.so
 vendor/firmware/nvram43455_hw.txt
 vendor/firmware/nvram43455_hw_vn1.txt
-vendor/firmware/ram_reg_test_cfg
 vendor/firmware/Total.wdk
-vendor/firmware/wifi_cfg
-
 # FM
 vendor/lib/hw/fm.bcm.hi6250.so
 vendor/lib/hw/fm.hisi.hi6250.so
@@ -120,9 +86,6 @@ vendor/lib/hw/gatekeeper.hi6250.so
 vendor/lib64/hw/gatekeeper.hi6250.so
 
 # GPS
-vendor/bin/gnss_control_hisi
-vendor/bin/gnss_engine_hisi
-vendor/bin/gnss_supl20clientd_hisi
 vendor/etc/geoloc.conf
 vendor/etc/gnss/config/gnss_lss_config_thirdparty.bin
 vendor/etc/gnss/config/gnss_lss_rfg_key_thirdparty.pem
@@ -139,15 +102,9 @@ vendor/etc/gnss/rmd/e/aindex.bin
 vendor/etc/gnss/rmd/t/a_1
 vendor/etc/gnss/rmd/t/aindex.bin
 vendor/etc/gnss/security/gnss_vodafone_hisi.bks
-vendor/etc/gnss/security/gnss_caict_hisi.bks
-vendor/etc/gnss/security/gnss_kddi_hisi.bks
-vendor/etc/gnss/security/gnss_claro_hisi.bks
 vendor/etc/gnss/security/gnss_entel_hisi.bks
 vendor/etc/gnss/security/gnss_iusacell_hisi.bks
-vendor/etc/gnss/security/gnss_huawei_hisi.bks
 vendor/etc/gnss/gnss_lss_thirdparty.conf
-vendor/lib/libgnss_lss_gw_thirdparty.so
-vendor/lib64/hw/gps.hi1102.default.so:vendor/lib64/hw/gps.default.so
 vendor/lib64/libgnss_common_hisi.so
 vendor/lib64/libgnss_lss_gw_thirdparty.so
 vendor/lib64/libgnss_supl10client_hisi.so
@@ -163,7 +120,6 @@ vendor/lib/libOpenCLFoundation.so
 vendor/lib/libOpenCL.so
 vendor/lib/libSR_opencl.so
 vendor/lib/libhiion.so
-vendor/lib/vendor.huawei.hardware.graphics.displayeffect@1.0.so
 vendor/lib64/egl/libGLES_mali.so
 vendor/lib64/hw/gralloc.hi6250.so
 vendor/lib64/hw/hwcomposer.hi6250.so
@@ -171,7 +127,6 @@ vendor/lib64/libOpenCLFoundation.so
 vendor/lib64/libOpenCL.so
 vendor/lib64/libSR_opencl.so
 vendor/lib64/libhiion.so
-vendor/lib64/vendor.huawei.hardware.graphics.displayeffect@1.0.so
 
 # Keystore
 vendor/lib/hw/keystore.hi6250.so
@@ -184,16 +139,13 @@ vendor/lib64/hw/memtrack.hi6250.so
 # Misc
 vendor/lib/lib_device_interface.so
 vendor/lib/lib_factory_interface.so
-vendor/lib/lib_mmi_interface.so
 vendor/lib/libc_secshared.so
 vendor/lib/libchrlog.so
 vendor/lib/libhilog.so
 vendor/lib/libhwlog.so
 vendor/lib/libimonitor.so
-vendor/lib/libjtag_wdt_ctrl.so
 vendor/lib/libnvme.so
 vendor/lib/liboeminfo.so
-vendor/lib/libxcollie.so
 vendor/lib64/lib_device_interface.so
 vendor/lib64/lib_factory_interface.so
 vendor/lib64/lib_mmi_interface.so
@@ -202,38 +154,25 @@ vendor/lib64/libchrlog.so
 vendor/lib64/libhilog.so
 vendor/lib64/libhwlog.so
 vendor/lib64/libimonitor.so
-vendor/lib64/libjtag_wdt_ctrl.so
 vendor/lib64/libnvme.so
 vendor/lib64/liboeminfo.so
-vendor/lib64/libxcollie.so
 
 # Modem
-vendor/bin/atcmdserver
 vendor/etc/modemConfig/balong/basic_name
 vendor/etc/modemConfig/balong/FieldTest.cfg
-vendor/etc/modemConfig/viacbp82d_shutdown_log.bcfg
 vendor/etc/modemConfig/hids_ue_msg.cfg
-vendor/etc/modemConfig/viacbp82d_log.bcfg
-vendor/etc/modemConfig/VIA/basic_name
-vendor/etc/modemConfig/VIA/viacbp82d_FieldTest.bcfg
 vendor/etc/factory_modem.cfg
 vendor/lib/libconn_factory_test.so
 vendor/lib/libhisi_efuse.so
 vendor/lib/libhw_display_test.so
-vendor/lib/vendor.huawei.hardware.modemlogcat@1.0.so
-vendor/lib/vendor.huawei.hardware.nfc@1.0.so
-vendor/lib64/libcommunication_api.so
 vendor/lib64/libconn_factory_test.so
 vendor/lib64/libdevice_status_api.so
 vendor/lib64/libhisi_efuse.so
 vendor/lib64/libhw_display_test.so
-vendor/lib64/vendor.huawei.hardware.modemlogcat@1.0.so
-vendor/lib64/vendor.huawei.hardware.nfc@1.0.so
 
 # OMX
 vendor/etc/media_codecs.xml
 vendor/etc/media_codecs_performance.xml
-vendor/etc/media_profiles_V1_0.xml
 vendor/lib/libomx_vxd.so
 vendor/lib/libomx_vxe.so
 vendor/lib/libstagefrighthw.so
@@ -242,33 +181,22 @@ vendor/lib64/libomx_vxe.so
 vendor/lib64/libstagefrighthw.so
 
 # RIL
-vendor/bin/hw/rild
 vendor/lib/libbalong-ril.so
 vendor/lib/libbalong-ril-1.so
 vendor/lib/libbalong-ril-2.so
 -vendor/lib/libril.so
 vendor/lib/lib_wifi_sar.so
-vendor/lib/vendor.huawei.hardware.radio@1.0.so
-vendor/lib/vendor.huawei.hardware.radio@1.1.so
 vendor/lib64/libbalong-ril.so
 vendor/lib64/libbalong-ril-1.so
 vendor/lib64/libbalong-ril-2.so
 -vendor/lib64/libril.so
 vendor/lib64/lib_wifi_sar.so
-vendor/lib64/vendor.huawei.hardware.radio@1.0.so
-vendor/lib64/vendor.huawei.hardware.radio@1.1.so
 
 # Sensors
-vendor/lib/hw/sensors.default.so:vendor/lib/hw/sensors.hi6250.so
-vendor/lib64/hw/sensors.default.so:vendor/lib64/hw/sensors.hi6250.so
 
 # TEE
-vendor/bin/teecd
-vendor/etc/native_packages.xml:vendor/etc/native_packages.bin
 vendor/lib/libteec.so
 vendor/lib64/libteec.so
 
 # Thermal
-vendor/lib/hw/thermal.hi6250.so
-vendor/lib64/hw/thermal.hi6250.so
 

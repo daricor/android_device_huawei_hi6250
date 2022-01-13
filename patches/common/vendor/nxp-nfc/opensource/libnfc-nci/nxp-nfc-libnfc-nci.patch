@@ -1,0 +1,64 @@
+From 20d1f5f1eb075ee2fb5fe24d13404a51a93d6673 Mon Sep 17 00:00:00 2001
+From: Meticulus <theonejohnnyd@gmail.com>
+Date: Sun, 19 Nov 2017 14:25:05 -0600
+Subject: [PATCH] "nxp-nfc-libnfc-nci _______________________________
+
+*Previous From c936cd11eae56f6dd2e9426e00eb87d0422e668c Mon Sep 17 00:00:00 2001
+*Previous From: Meticulus <theonejohnnyd@gmail.com>
+*Previous Date: Sun, 19 Nov 2017 10:39:06 -0600
+*Previous Subject: [PATCH] "nxp-nfc-libnfc-nci _______________________________
+*
+**Previous From a14ea96c8cf2ae114d3500e2218345eaadabfd5a Mon Sep 17 00:00:00 2001
+**Previous From: Meticulus <theonejohnnyd@gmail.com>
+**Previous Date: Fri, 3 Mar 2017 07:33:40 -0600
+**Previous Subject: [PATCH] nxp-nfc-libnfc-nci
+**
+**Change-Id: I7ec88fb2d59b262ca7a756e859ba66355aad4da7""
+---
+ src/adaptation/NfcAdaptation.cpp | 2 +-
+ src/nfc/nfc/nfc_main.c           | 2 +-
+ src/nfc/nfc/nfc_ncif.c           | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/adaptation/NfcAdaptation.cpp b/src/adaptation/NfcAdaptation.cpp
+index 79a152b..6829737 100644
+--- a/src/adaptation/NfcAdaptation.cpp
++++ b/src/adaptation/NfcAdaptation.cpp
+@@ -723,7 +723,7 @@ void NfcAdaptation::DownloadFirmware ()
+     HalOpen (HalDownloadFirmwareCallback, HalDownloadFirmwareDataCallback);
+     mHalOpenCompletedEvent.wait ();
+     mHalOpenCompletedEvent.unlock();
+-#if (NXP_EXTNS == TRUE)
++#if (NXP_EXTNS == FALSE)
+     /* Send a CORE_RESET and CORE_INIT to the NFCC. This is required because when calling
+      * HalCoreInitialized, the HAL is going to parse the conf file and send NCI commands
+      * to the NFCC. Hence CORE-RESET and CORE-INIT have to be sent prior to this.
+diff --git a/src/nfc/nfc/nfc_main.c b/src/nfc/nfc/nfc_main.c
+index 9358be0..5726445 100644
+--- a/src/nfc/nfc/nfc_main.c
++++ b/src/nfc/nfc/nfc_main.c
+@@ -455,7 +455,7 @@ void nfc_main_handle_hal_evt (tNFC_HAL_EVT_MSG *p_msg)
+                 if (p_msg->status == HAL_NFC_STATUS_OK)
+                 {
+                     nfc_enabled (NCI_STATUS_OK, nfc_cb.p_nci_init_rsp);
+-#if(NXP_EXTNS == TRUE)
++#if(NXP_EXTNS == FALSE)
+                     /*
+                      * reading requred EEPROM config vlaues from HAL
+                      * and updating libnfc structure.
+diff --git a/src/nfc/nfc/nfc_ncif.c b/src/nfc/nfc/nfc_ncif.c
+index f738d0a..59d1d21 100644
+--- a/src/nfc/nfc/nfc_ncif.c
++++ b/src/nfc/nfc/nfc_ncif.c
+@@ -2374,7 +2374,7 @@ void nfc_ncif_proc_init_rsp (BT_HDR *p_msg)
+     p = (UINT8 *) (p_msg + 1) + p_msg->offset;
+     /* handle init params in nfc_enabled */
+     status   = *(p + NCI_MSG_HDR_SIZE);
+-#if(NXP_EXTNS == TRUE)
++#if(NXP_EXTNS == FALSE)
+     if(NCI_STATUS_OK == status)
+     {
+ #if(NXP_NFCC_MW_RCVRY_BLK_FW_DNLD == TRUE)
+-- 
+2.7.4
+

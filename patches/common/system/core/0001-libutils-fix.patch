@@ -1,0 +1,31 @@
+From e3d1eb7b93ce63f26fd99fc2d5fea88efb4b61ba Mon Sep 17 00:00:00 2001
+From: Meticulus <theonejohnnyd@gmail.com>
+Date: Sun, 26 Mar 2017 10:50:15 -0500
+Subject: [PATCH] libutils - fix
+
+Change-Id: I4a2509a71280ed49f5202acf009a4f37c760d63e
+---
+ libutils/String8.cpp | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/libutils/String8.cpp b/libutils/String8.cpp
+index 755e0d1..b65b7cc 100644
+--- a/libutils/String8.cpp
++++ b/libutils/String8.cpp
+@@ -147,8 +147,12 @@ static char* allocFromUTF32(const char32_t* in, size_t len)
+ // ---------------------------------------------------------------------------
+ 
+ String8::String8()
+-    : mString(getEmptyString())
++    : mString(0)
+ {
++    char* data = static_cast<char*>(
++            SharedBuffer::alloc(sizeof(char))->data());
++    data[0] = 0;
++    mString = data;
+ }
+ 
+ String8::String8(StaticLinkage)
+-- 
+1.9.1
+

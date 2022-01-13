@@ -56,8 +56,8 @@ PRODUCT_PACKAGES += \
     hwcomposer.hi6250 \
 
 # Hardware
-PRODUCT_PACKAGES += \
-    emui5_vendor_symlinks
+#PRODUCT_PACKAGES += \
+#    emui5_vendor_symlinks
 
 # DeviceSettings
 PRODUCT_PACKAGES += \

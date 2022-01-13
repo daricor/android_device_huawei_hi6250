@@ -1,0 +1,11 @@
+type chr_logd, domain;
+type chr_logd_exec, exec_type, file_type;
+
+init_daemon_domain(chr_logd)
+
+allow chr_logd log_device:chr_file rw_file_perms;
+allow chr_logd hisi_log:file create_file_perms;
+allow chr_logd hisi_log:sock_file { create_file_perms };
+allow chr_logd hisi_log:dir rw_dir_perms;
+allow chr_logd kernel_devicetree:file r_file_perms;
+allow chr_logd properties_device:file r_file_perms;

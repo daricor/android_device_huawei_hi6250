@@ -1,0 +1,17 @@
+type perfhub, domain;
+type perfhub_exec, exec_type, file_type;
+
+init_daemon_domain(perfhub)
+
+allow perfhub servicemanager:binder { call transfer };
+allow perfhub sysfs:file rw_file_perms;
+#allow perfhub default_android_service:service_manager { add };
+allow perfhub graphics_device:dir r_dir_perms;
+allow perfhub graphics_device:chr_file rw_file_perms;
+allow perfhub hwcamcfgsvr:binder { call transfer };
+allow perfhub hwcamcfgsvr:fd { use };
+allow perfhub surfaceflinger_service:service_manager { find };
+allow perfhub surfaceflinger:fd { use };
+allow perfhub properties_device:file r_file_perms;
+allow perfhub kernel_devicetree:file r_file_perms;
+allow perfhub ion_device:chr_file r_file_perms;

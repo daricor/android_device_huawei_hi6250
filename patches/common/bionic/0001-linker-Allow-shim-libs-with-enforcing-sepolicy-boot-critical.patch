@@ -1,0 +1,94 @@
+From c3dd6d4148b3710b8b472f5b18c81680c4bd29c8 Mon Sep 17 00:00:00 2001
+From: Meticulus <theonejohnnyd@gmail.com>
+Date: Mon, 13 Nov 2017 11:04:12 -0600
+Subject: [PATCH] 
+ "0001-linker-Allow-shim-libs-with-enforcing-sepolicy-boot-critical
+ _______________________________
+
+*Previous From 14b890bcf49207871cfc6b1a73a1304f39fc92fb Mon Sep 17 00:00:00 2001
+*Previous From: Meticulus <theonejohnnyd@gmail.com>
+*Previous Date: Fri, 10 Nov 2017 03:38:01 -0600
+*Previous Subject: [PATCH]
+*"0001-linker-Allow-shim-libs-with-enforcing-sepolicy-boot-critical
+*_______________________________
+*
+**Previous From a883e096f5e679976a71ff5e16f39b3a16239939 Mon Sep 17 00:00:00 2001
+**Previous From: Meticulus <theonejohnnyd@gmail.com>
+**Previous Date: Sat, 24 Dec 2016 23:49:04 -0600
+**Previous Subject: [PATCH] 0001-linker-Allow-shim-libs-with-enforcing-sepolicy
+**
+**Change-Id: I09ecbdfe092879e0227f29b989d0a2eda0c59909"
+*
+*Change-Id: I19bce9795e1d7e88119f9c16bc5213192080513f"
+
+Change-Id: Ie1b4f393df88a6d3b6ee83050ab6ef316c00b1e3
+---
+ linker/Android.mk |  4 ++++
+ linker/linker.cpp | 14 +++++++++-----
+ 2 files changed, 13 insertions(+), 5 deletions(-)
+
+diff --git a/linker/Android.mk b/linker/Android.mk
+index 24ae070..3abf7a3 100644
+--- a/linker/Android.mk
++++ b/linker/Android.mk
+@@ -58,6 +58,10 @@ ifeq ($(TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS),true)
+ LOCAL_CPPFLAGS += -DTARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS
+ endif
+ 
++ifneq ($(LD_SHIM_LIBS),)
++LOCAL_CPPFLAGS += -DLD_SHIM_LIBS=\"$(LD_SHIM_LIBS)\"
++endif
++
+ # We need to access Bionic private headers in the linker.
+ LOCAL_CFLAGS += -I$(LOCAL_PATH)/../libc/
+ 
+diff --git a/linker/linker.cpp b/linker/linker.cpp
+index ef31dae..53cda0a 100644
+--- a/linker/linker.cpp
++++ b/linker/linker.cpp
+@@ -1616,8 +1616,8 @@ static int open_library_in_zipfile(ZipArchiveCache* zip_archive_cache,
+   if (realpath_fd(fd, realpath)) {
+     *realpath += separator;
+   } else {
+-    PRINT("warning: unable to get realpath for the library \"%s\". Will use given path.",
+-          normalized_path.c_str());
++    //PRINT("warning: unable to get realpath for the library \"%s\". Will use given path.",
++     //     normalized_path.c_str());
+     *realpath = normalized_path;
+   }
+ 
+@@ -1654,7 +1654,7 @@ static int open_library_on_paths(ZipArchiveCache* zip_archive_cache,
+       if (fd != -1) {
+         *file_offset = 0;
+         if (!realpath_fd(fd, realpath)) {
+-          PRINT("warning: unable to get realpath for the library \"%s\". Will use given path.", buf);
++          //PRINT("warning: unable to get realpath for the library \"%s\". Will use given path.", buf);
+           *realpath = buf;
+         }
+       }
+@@ -1687,7 +1687,7 @@ static int open_library(android_namespace_t* ns,
+       if (fd != -1) {
+         *file_offset = 0;
+         if (!realpath_fd(fd, realpath)) {
+-          PRINT("warning: unable to get realpath for the library \"%s\". Will use given path.", name);
++          //PRINT("warning: unable to get realpath for the library \"%s\". Will use given path.", name);
+           *realpath = name;
+         }
+       }
+@@ -4346,8 +4346,12 @@ static ElfW(Addr) __linker_init_post_relocation(KernelArgumentBlock& args, ElfW(
+     if (ldpreload_env != nullptr) {
+       INFO("[ LD_PRELOAD set to \"%s\" ]", ldpreload_env);
+     }
+-    ldshim_libs_env = getenv("LD_SHIM_LIBS");
+   }
++#ifdef LD_SHIM_LIBS
++  ldshim_libs_env = LD_SHIM_LIBS;
++#else
++  ldshim_libs_env = getenv("LD_SHIM_LIBS");
++#endif
+ 
+   struct stat file_stat;
+   // Stat "/proc/self/exe" instead of executable_path because
+-- 
+2.7.4
+

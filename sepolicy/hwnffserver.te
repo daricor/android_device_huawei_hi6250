@@ -1,0 +1,11 @@
+type hwnffserver, domain;
+type hwnffserver_exec, exec_type, file_type;
+
+init_daemon_domain(hwnffserver)
+
+allow hwnffserver socket_device:sock_file rw_file_perms;
+allow hwnffserver oeminfo_nvm:unix_stream_socket { connectto };
+allow hwnffserver device:dir rw_dir_perms;
+allow hwnffserver device:file { unlink rw_file_perms };
+allow hwnffserver kernel_devicetree:file r_file_perms;
+allow hwnffserver properties_device:file r_file_perms;

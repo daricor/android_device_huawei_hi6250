@@ -1,0 +1,2 @@
+allow perfprofd properties_device:file r_file_perms;
+allow perfprofd kernel_devicetree:file r_file_perms;

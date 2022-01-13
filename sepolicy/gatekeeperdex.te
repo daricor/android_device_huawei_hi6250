@@ -1,0 +1,4 @@
+allow gatekeeperd tee:unix_stream_socket { connectto rw_socket_perms };
+allow gatekeeperd teecd_device:chr_file rw_file_perms;
+allow gatekeeperd tee:fd { use };
+allow gatekeeperd properties_device:file r_file_perms;

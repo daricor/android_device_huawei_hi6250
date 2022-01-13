@@ -1,0 +1,2 @@
+allow tzdatacheck properties_device:file r_file_perms;
+allow tzdatacheck kernel_devicetree:file r_file_perms;

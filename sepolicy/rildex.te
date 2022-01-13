@@ -1,0 +1,5 @@
+allow rild sysfs:file rw_file_perms;
+allow rild proc_net:file rw_file_perms;
+allow rild properties_device:file r_file_perms;
+allow rild kernel_devicetree:file r_file_perms;
+allow rild hisi_log:dir { search };

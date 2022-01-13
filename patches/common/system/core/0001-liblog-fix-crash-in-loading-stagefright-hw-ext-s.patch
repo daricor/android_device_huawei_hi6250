@@ -1,0 +1,38 @@
+From 7f685bdd152fe9bfd2f9f3ee8bc6d1ab500b42c6 Mon Sep 17 00:00:00 2001
+From: Meticulus <theonejohnnyd@gmail.com>
+Date: Wed, 15 Nov 2017 08:21:50 -0600
+Subject: [PATCH] liblog - fix crash in loading stagefright hw ext's
+
+Change-Id: Ic81ce83c6d76e3634bd3a5f6770fd3f4178ac63d
+---
+ liblog/logger_write.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/liblog/logger_write.c b/liblog/logger_write.c
+index c7b5a84..5b1ec07 100644
+--- a/liblog/logger_write.c
++++ b/liblog/logger_write.c
+@@ -51,6 +51,12 @@ static enum {
+ 
+ static int check_log_uid_permissions()
+ {
++/* Meticulus:
++ * geteuid() and getuid() crash in libc. This patch
++ * bypasses uid checks for permission to log.
++ * Note to self: Check rc's for service groups?
++ */
++#if 0
+ #if defined(__BIONIC__)
+     uid_t uid = __android_log_uid();
+ 
+@@ -93,6 +99,7 @@ static int check_log_uid_permissions()
+         }
+     }
+ #endif
++#endif
+     return 0;
+ }
+ 
+-- 
+2.7.4
+

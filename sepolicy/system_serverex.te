@@ -1,0 +1,6 @@
+allow system_server init:unix_dgram_socket rw_socket_perms;
+allow system_server zygote:binder { call transfer };
+allow system_server flp_device:chr_file rw_file_perms;
+allow system_server hwcamcfgsvr:binder { call transfer };
+allow system_server gnss:unix_stream_socket { connectto };
+allow system_server zygote:process setsched;

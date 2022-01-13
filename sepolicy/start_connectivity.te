@@ -1,0 +1,30 @@
+type hi110x_daemon, domain;
+type hi110x_daemon_exec, exec_type, file_type;
+type con_device,dev_type,file_type;
+
+init_daemon_domain(hi110x_daemon)
+
+allow hi110x_daemon kmsg_device:chr_file rw_file_perms;
+allow hi110x_daemon property_socket:sock_file rw_file_perms;
+allow hi110x_daemon shell_exec:file r_file_perms;
+allow hi110x_daemon sysfs:file rw_file_perms;
+allow hi110x_daemon self:capability { sys_nice fsetid chown fowner };
+allow hi110x_daemon kernel:process { setsched };
+allow hi110x_daemon sysfs:file { setattr rw_file_perms };
+allow hi110x_daemon con_device:chr_file { setattr rw_file_perms };
+allow hi110x_daemon log_device:chr_file { setattr rw_file_perms };
+allow hi110x_daemon self:capability { dac_override };
+allow hi110x_daemon system_data_file:dir { rw_dir_perms create setattr };
+allow hi110x_daemon wifi_data_file:dir { search getattr setattr };
+allow hi110x_daemon wifi_data_file:file { setattr rw_file_perms };
+allow hi110x_daemon init:unix_stream_socket { connectto };
+allow hi110x_daemon gnss_device:chr_file { getattr setattr };
+allow hi110x_daemon gnss_data_file:dir { setattr rw_dir_perms };
+allow hi110x_daemon gnss_data_file:file { setattr rw_file_perms };
+allow hi110x_daemon bluetooth_device:chr_file { getattr setattr };
+allow hi110x_daemon hci_attach_dev:chr_file create_file_perms;
+allow hi110x_daemon hisi_log:dir { setattr rw_dir_perms };
+allow hi110x_daemon oam_hisi_device:chr_file { getattr setattr };
+allow hi110x_daemon toolbox_exec:file { r_file_perms execute execute_no_trans };
+allow hi110x_daemon properties_device:file r_file_perms;
+allow hi110x_daemon kernel_devicetree:file r_file_perms;

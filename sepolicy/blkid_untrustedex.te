@@ -1,0 +1,2 @@
+allow blkid_untrusted properties_device:file r_file_perms;
+allow blkid_untrusted kernel_devicetree:file r_file_perms;

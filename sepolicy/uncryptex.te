@@ -1,0 +1,2 @@
+allow uncrypt properties_device:file r_file_perms;
+allow uncrypt kernel_devicetree:file r_file_perms;

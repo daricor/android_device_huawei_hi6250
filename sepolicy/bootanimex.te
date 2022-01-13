@@ -1,0 +1,2 @@
+allow bootanim properties_device:file r_file_perms;
+allow bootanim kernel_devicetree:file r_file_perms;

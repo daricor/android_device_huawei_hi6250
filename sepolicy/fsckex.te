@@ -1,0 +1,6 @@
+allow fsck kernel_devicetree:file r_file_perms;
+allow fsck properties_device:file r_file_perms;
+allow fsck userdata_blkdev:blk_file rw_file_perms;
+allow fsck cache_blkdev:blk_file rw_file_perms;
+allow fsck splash2_blkdev:blk_file rw_file_perms;
+allow fsck secure_storage_blkdev:blk_file rw_file_perms;

@@ -1,0 +1,4 @@
+type statusd, domain;
+type statusd_exec, exec_type, file_type;
+
+init_daemon_domain(statusd)

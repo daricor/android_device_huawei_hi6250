@@ -1,0 +1,14 @@
+type oam_hisi, domain;
+type oam_hisi_exec, exec_type, file_type;
+type oam_hisi_device, dev_type,file_type;
+
+init_daemon_domain(oam_hisi)
+
+allow oam_hisi system_data_file:dir { rw_dir_perms };
+allow oam_hisi oam_hisi:netlink_socket create_socket_perms;
+allow oam_hisi hisi_log:file create_file_perms;
+allow oam_hisi hisi_log:dir create_dir_perms;
+allow oam_hisi oam_hisi_device:chr_file rw_file_perms;
+allow oam_hisi properties_device:file r_file_perms;
+allow oam_hisi kernel_devicetree:file r_file_perms;
+allow oam_hisi sysfs:file r_file_perms;

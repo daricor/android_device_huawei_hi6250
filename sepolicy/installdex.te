@@ -1,0 +1,2 @@
+allow installd properties_device:file r_file_perms;
+allow installd kernel_devicetree:file r_file_perms;

@@ -1,0 +1,2 @@
+allow healthd properties_device:file r_file_perms;
+allow healthd kernel_devicetree:file r_file_perms;

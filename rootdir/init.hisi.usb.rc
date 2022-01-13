@@ -1,0 +1,4 @@
+
+on boot
+    chown system system /sys/devices/platform/ff100000.hisi_usb/plugusb
+    chmod 0660 /sys/devices/platform/ff100000.hisi_usb/plugusb

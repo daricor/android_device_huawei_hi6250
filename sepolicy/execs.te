@@ -1,0 +1,4 @@
+type diagserver_exec, exec_type, file_type;
+type logserver_exec, exec_type, file_type;
+type atcmdserver_exec, exec_type, file_type;
+type himreg_exec, exec_type, file_type;

@@ -1,0 +1,2 @@
+allow sysinit properties_device:file r_file_perms;
+allow sysinit kernel_devicetree:file r_file_perms;

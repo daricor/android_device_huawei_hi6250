@@ -1,0 +1,5 @@
+type hivwserver, domain;
+type hivwserver_exec, exec_type, file_type;
+
+init_daemon_domain(hivwserver)
+

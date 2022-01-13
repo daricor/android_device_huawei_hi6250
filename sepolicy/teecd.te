@@ -1,0 +1,27 @@
+type teecd, domain;
+type teecd_exec, exec_type, file_type;
+
+init_daemon_domain(teecd)
+
+allow tee rootfs:file { entrypoint };
+
+allow tee teecd_device:chr_file rw_file_perms;
+allow tee property_socket:sock_file rw_file_perms;
+allow tee init:unix_stream_socket { connectto };
+allow tee system_data_file:dir { rw_dir_perms create };
+allow tee system_data_file:file r_file_perms;
+#allow tee self:capability { chown fowner fsetid sys_ptrace };
+allow tee self:capability { chown fowner fsetid };
+allow tee init:dir rw_dir_perms;
+allow tee gatekeeperd:dir r_dir_perms;
+allow tee gatekeeperd:file r_file_perms;
+allow tee keystore:file r_file_perms;
+allow tee keystore:dir r_dir_perms;
+allow tee fingerprintd:dir r_dir_perms;
+allow tee fingerprintd:file r_file_perms;
+allow tee hisi_log:dir { create_dir_perms };
+allow tee hisi_log:file { create_file_perms };
+allow tee unlabeled:dir { search };
+#allow tee default_prop:property_service { set };
+allow tee properties_device:file r_file_perms;
+allow tee kernel_devicetree:file r_file_perms;

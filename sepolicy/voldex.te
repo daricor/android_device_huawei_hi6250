@@ -1,0 +1,2 @@
+allow vold properties_device:file r_file_perms;
+allow vold kernel_devicetree:file r_file_perms;

@@ -1,0 +1,4 @@
+allow ueventd oeminfo_nvm_device:chr_file create_file_perms;
+allow ueventd properties_device:file r_file_perms;
+allow ueventd device:chr_file { relabelfrom relabelto };
+allow ueventd kernel_devicetree:file r_file_perms;

@@ -1,0 +1,14 @@
+allow zygote servicemanager:binder { call };
+allow zygote system_server:binder { call transfer };
+allow zygote properties_device:file r_file_perms;
+allow zygote kernel_devicetree:file r_file_perms;
+allow zygote kernel_devicetree:dir { search };
+allow zygote self:capability { sys_nice };
+allow zygote self:process { execmem };
+allow zygote zygote_tmpfs:file { execute };
+allow zygote user_profile_data_file:file r_file_perms;
+allow zygote sysfs:file rw_file_perms;
+allow zygote gnss:unix_stream_socket { connectto };
+allow zygote gnss_data_file:sock_file rw_file_perms;
+allow zygote ashmem_device:chr_file { execute };
+allow zygote radio:binder { call };

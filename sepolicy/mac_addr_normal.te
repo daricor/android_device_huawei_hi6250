@@ -1,0 +1,16 @@
+type mac_addr_normalization, domain;
+type mac_addr_normalization_exec, exec_type, file_type;
+
+init_daemon_domain(mac_addr_normalization)
+
+allow mac_addr_normalization oeminfo_nvm:unix_stream_socket { connectto };
+allow mac_addr_normalization socket_device:sock_file rw_file_perms;
+allow mac_addr_normalization self:capability { dac_override chown fowner };
+allow mac_addr_normalization wifi_data_file:dir rw_dir_perms;
+allow mac_addr_normalization wifi_data_file:file create_file_perms;
+allow mac_addr_normalization bluetooth_data_file:dir rw_dir_perms;
+allow mac_addr_normalization bluetooth_data_file:file create_file_perms;
+allow mac_addr_normalization device:dir rw_dir_perms;
+allow mac_addr_normalization device:file { unlink rw_file_perms };
+allow mac_addr_normalization properties_device:file r_file_perms;
+allow mac_addr_normalization kernel_devicetree:file r_file_perms;

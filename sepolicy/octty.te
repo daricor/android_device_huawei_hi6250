@@ -1,0 +1,9 @@
+type octty, domain;
+type octty_exec, exec_type, file_type;
+
+init_daemon_domain(octty)
+
+allow octty properties_device:file r_file_perms;
+allow octty kernel_devicetree:file r_file_perms;
+allow octty sysfs:file r_file_perms;
+allow octty gps_device:chr_file rw_file_perms;

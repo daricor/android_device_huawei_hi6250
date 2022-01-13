@@ -1,0 +1,31 @@
+From 2950fcd9e2bcfac85c307a7a093c2bf677f6dde9 Mon Sep 17 00:00:00 2001
+From: Meticulus <theonejohnnyd@gmail.com>
+Date: Fri, 17 Nov 2017 19:32:32 -0600
+Subject: [PATCH] gatekeeperd: don't build gatekeeperd
+
+Change-Id: Ifa2da3f1b4faccf819d251df3a4ad8c67aba2b1e
+---
+ gatekeeperd/Android.mk | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/gatekeeperd/Android.mk b/gatekeeperd/Android.mk
+index 3f78955..b07beff 100644
+--- a/gatekeeperd/Android.mk
++++ b/gatekeeperd/Android.mk
+@@ -13,7 +13,7 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ #
+-
++ifeq (0,1)
+ LOCAL_PATH := $(call my-dir)
+ 
+ include $(CLEAR_VARS)
+@@ -40,3 +40,4 @@ LOCAL_INIT_RC := gatekeeperd.rc
+ include $(BUILD_EXECUTABLE)
+ 
+ include $(call first-makefiles-under,$(LOCAL_PATH))
++endif
+-- 
+2.7.4
+

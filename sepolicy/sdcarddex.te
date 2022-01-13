@@ -1,0 +1,2 @@
+allow sdcardd properties_device:file r_file_perms;
+allow sdcardd kernel_devicetree:file r_file_perms;

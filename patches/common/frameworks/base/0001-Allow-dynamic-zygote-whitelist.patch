@@ -1,0 +1,33 @@
+From 855b1295f08cb7b7bc9e97660e7c344a6d984396 Mon Sep 17 00:00:00 2001
+From: Meticulus <theonejohnnyd@gmail.com>
+Date: Mon, 20 Nov 2017 15:32:08 -0600
+Subject: [PATCH] Allow dynamic zygote whitelist
+
+-I need to specify a path that has a var that is discovered
+at runtime. Statically put it in like this.
+
+Change-Id: I044ef35dfe51d3b09e3f72af9cbdd22198d11cdc
+---
+ core/jni/fd_utils-inl.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/core/jni/fd_utils-inl.h b/core/jni/fd_utils-inl.h
+index a68a602..25260ce 100644
+--- a/core/jni/fd_utils-inl.h
++++ b/core/jni/fd_utils-inl.h
+@@ -269,6 +269,12 @@ class FileDescriptorInfo {
+       }
+     }
+ 
++    static const std::string kProductPrefix = "/product/hw_oem";
++    static const std::string kPropSuffix = ".prop";
++    if (StartsWith(path, kProductPrefix) && EndsWith(path, kPropSuffix)) {
++      return true;
++    }
++
+     static const std::string kFrameworksPrefix = "/system/framework/";
+     static const std::string kJarSuffix = ".jar";
+     if (StartsWith(path, kFrameworksPrefix) && EndsWith(path, kJarSuffix)) {
+-- 
+2.7.4
+

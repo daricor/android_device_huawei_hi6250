@@ -1,0 +1,4 @@
+allow cameraserver properties_device:file r_file_perms;
+allow cameraserver kernel_devicetree:file r_file_perms;
+allow cameraserver hwcamcfgsvr:binder { call };
+allow cameraserver default_android_service:service_manager { find };

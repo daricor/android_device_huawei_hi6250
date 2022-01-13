@@ -1,0 +1,2 @@
+allow debuggerd properties_device:file r_file_perms;
+allow debuggerd kernel_devicetree:file r_file_perms;

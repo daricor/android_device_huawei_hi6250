@@ -1,0 +1,74 @@
+From e8dd7924225d762203f895dd492c104ef0df588d Mon Sep 17 00:00:00 2001
+From: Meticulus <theonejohnnyd@gmail.com>
+Date: Mon, 6 Mar 2017 12:49:15 -0600
+Subject: [PATCH 2/2] opengl: dont use swap buffers with damage
+
+Change-Id: Id72cda06beef4d7aa37f64e4cb1b9c8b0df31491
+---
+ opengl/libs/Android.mk     |  4 ++++
+ opengl/libs/EGL/eglApi.cpp | 12 ++++++++++--
+ 2 files changed, 14 insertions(+), 2 deletions(-)
+
+diff --git a/opengl/libs/Android.mk b/opengl/libs/Android.mk
+index 5fee725..a5f9a0e 100644
+--- a/opengl/libs/Android.mk
++++ b/opengl/libs/Android.mk
+@@ -64,6 +64,10 @@ ifeq ($(BOARD_USE_BGRA_8888), true)
+   LOCAL_CFLAGS += -DUSE_BGRA_8888
+ endif
+ 
++ifeq ($(BOARD_NO_SUPPORT_SWAP_BUFFERS_WITH_DAMAGE), true)
++  LOCAL_CFLAGS += -DNO_SUPPORT_SWAP_BUFFERS_WITH_DAMAGE
++endif
++
+ ifneq ($(filter address,$(SANITIZE_TARGET)),)
+   LOCAL_CFLAGS_32 += -DEGL_WRAPPER_DIR=\"/$(TARGET_COPY_OUT_DATA)/lib\"
+   LOCAL_CFLAGS_64 += -DEGL_WRAPPER_DIR=\"/$(TARGET_COPY_OUT_DATA)/lib64\"
+diff --git a/opengl/libs/EGL/eglApi.cpp b/opengl/libs/EGL/eglApi.cpp
+index 6ddabf3..31acb75 100644
+--- a/opengl/libs/EGL/eglApi.cpp
++++ b/opengl/libs/EGL/eglApi.cpp
+@@ -1098,8 +1098,12 @@ EGLBoolean eglSwapBuffersWithDamageKHR(EGLDisplay dpy, EGLSurface draw,
+ {
+     ATRACE_CALL();
+     clearError();
+-
++#ifdef NO_SUPPORT_SWAP_BUFFERS_WITH_DAMAGE
++    const egl_display_ptr dp = get_display(dpy);
++#else
+     const egl_display_ptr dp = validate_display(dpy);
++
++#endif
+     if (!dp) return EGL_FALSE;
+ 
+     SurfaceRef _s(dp.get(), draw);
+@@ -1108,6 +1112,10 @@ EGLBoolean eglSwapBuffersWithDamageKHR(EGLDisplay dpy, EGLSurface draw,
+ 
+     egl_surface_t const * const s = get_surface(draw);
+ 
++#ifdef NO_SUPPORT_SWAP_BUFFERS_WITH_DAMAGE
++    return s->cnx->egl.eglSwapBuffers(dp->disp.dpy, s->surface);
++#else
++
+     if (CC_UNLIKELY(dp->traceGpuCompletion)) {
+         EGLSyncKHR sync = eglCreateSyncKHR(dpy, EGL_SYNC_FENCE_KHR, NULL);
+         if (sync != EGL_NO_SYNC_KHR) {
+@@ -1128,7 +1136,6 @@ EGLBoolean eglSwapBuffersWithDamageKHR(EGLDisplay dpy, EGLSurface draw,
+     if (n_rects == 0) {
+         return s->cnx->egl.eglSwapBuffers(dp->disp.dpy, s->surface);
+     }
+-
+     Vector<android_native_rect_t> androidRects;
+     for (int r = 0; r < n_rects; ++r) {
+         int offset = r * 4;
+@@ -1152,6 +1159,7 @@ EGLBoolean eglSwapBuffersWithDamageKHR(EGLDisplay dpy, EGLSurface draw,
+     } else {
+         return s->cnx->egl.eglSwapBuffers(dp->disp.dpy, s->surface);
+     }
++#endif
+ }
+ 
+ EGLBoolean eglSwapBuffers(EGLDisplay dpy, EGLSurface surface)
+-- 
+1.9.1
+

@@ -1,0 +1,21 @@
+type oeminfo_nvm, domain;
+type oeminfo_nvm_exec, exec_type, file_type;
+type oeminfo_nvm_device, dev_type, file_type;
+
+init_daemon_domain(oeminfo_nvm)
+
+allow oeminfo_nvm rootfs:file { entrypoint };
+allow oeminfo_nvm device:dir { add_name write create };
+allow oeminfo_nvm socket_device:dir { add_name write };
+allow oeminfo_nvm socket_device:sock_file { create setattr };
+allow oeminfo_nvm self:capability { chown fsetid };
+allow oeminfo_nvm device:dir { open read write getattr setattr };
+allow oeminfo_nvm oeminfo_nvm_device:chr_file rw_file_perms;
+allow oeminfo_nvm oeminfo_blkdev:blk_file rw_file_perms;
+allow oeminfo_nvm device:dir rw_dir_perms;
+allow oeminfo_nvm device:file create_file_perms;
+allow oeminfo_nvm kernel_devicetree:file r_file_perms;
+allow oeminfo_nvm properties_device:file r_file_perms;
+allow oeminfo_nvm proc:file r_file_perms;
+allow oeminfo_nvm sysfs:file r_file_perms;
+allow oeminfo_nvm sysfs:dir r_dir_perms;

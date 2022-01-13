@@ -1,0 +1,2 @@
+allow sgdisk properties_device:file r_file_perms;
+allow sgdisk kernel_devicetree:file r_file_perms;

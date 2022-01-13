@@ -1,0 +1,63 @@
+From 865016a32ed44251cf54a5d6e89c77924ff263f3 Mon Sep 17 00:00:00 2001
+From: Meticulus <theonejohnnyd@gmail.com>
+Date: Thu, 23 Nov 2017 13:50:15 -0600
+Subject: [PATCH] "0001-keymaster-don-t-build-keymaster
+ _______________________________
+
+*Previous From edc2273263ecd265b450f7368d0e80bca106d2b4 Mon Sep 17 00:00:00 2001
+*Previous From: Meticulus <theonejohnnyd@gmail.com>
+*Previous Date: Fri, 17 Nov 2017 19:31:11 -0600
+*Previous Subject: [PATCH] keymaster: don't build keymaster
+*
+*Change-Id: I43328ad64d6c2d5fe5a159c6c049214473ebedc1"
+
+Change-Id: I03a087b5188de8e695d06da85cf465910a796dc9
+---
+ Android.mk | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/Android.mk b/Android.mk
+index 3e3a25b..b3131d2 100644
+--- a/Android.mk
++++ b/Android.mk
+@@ -37,6 +37,7 @@ LOCAL_CLANG_CFLAGS += -fno-sanitize-coverage=edge,indirect-calls,8bit-counters,t
+ LOCAL_MODULE_TAGS := optional
+ LOCAL_EXPORT_C_INCLUDE_DIRS := $(LOCAL_PATH)/include
+ LOCAL_ADDITIONAL_DEPENDENCIES := $(LOCAL_PATH)/Android.mk
++LOCAL_MODULE_RELATIVE_PATH := notused
+ include $(BUILD_SHARED_LIBRARY)
+ 
+ ###
+@@ -95,6 +96,7 @@ LOCAL_CLANG_CFLAGS += -Wno-error=unused-private-field
+ LOCAL_MODULE_TAGS := optional
+ LOCAL_EXPORT_C_INCLUDE_DIRS := $(LOCAL_PATH)/include
+ LOCAL_ADDITIONAL_DEPENDENCIES := $(LOCAL_PATH)/Android.mk
++LOCAL_MODULE_RELATIVE_PATH := notused
+ include $(BUILD_SHARED_LIBRARY)
+ 
+ 
+@@ -131,6 +133,7 @@ LOCAL_SHARED_LIBRARIES := libkeymaster_messages libkeymaster1 liblog libcrypto l
+ LOCAL_MODULE_TAGS := optional
+ LOCAL_ADDITIONAL_DEPENDENCIES := $(LOCAL_PATH)/Android.mk
+ LOCAL_EXPORT_C_INCLUDE_DIRS := $(LOCAL_PATH)/include
++LOCAL_MODULE_RELATIVE_PATH := notused
+ include $(BUILD_SHARED_LIBRARY)
+ 
+ ###
+@@ -143,6 +146,7 @@ LOCAL_EXPORT_C_INCLUDE_DIRS := \
+ 	$(LOCAL_PATH)/include
+ LOCAL_MODULE_TAGS := optional
+ LOCAL_ADDITIONAL_DEPENDENCIES := $(LOCAL_PATH)/Android.mk
++LOCAL_MODULE_RELATIVE_PATH := notused
+ include $(BUILD_STATIC_LIBRARY)
+ 
+ # Unit tests for libkeymaster
+@@ -178,4 +182,5 @@ LOCAL_SHARED_LIBRARIES := \
+ 	libcrypto \
+ 	libsoftkeymaster
+ LOCAL_ADDITIONAL_DEPENDENCIES := $(LOCAL_PATH)/Android.mk
++LOCAL_MODULE_RELATIVE_PATH := notused
+ include $(BUILD_NATIVE_TEST)
+-- 
+2.7.4
+

@@ -1,0 +1,2 @@
+allow fsck_untrusted properties_device:file r_file_perms;
+allow fsck_untrusted kernel_devicetree:file r_file_perms;

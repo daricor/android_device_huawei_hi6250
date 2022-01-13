@@ -1,0 +1,37 @@
+From 2c0be87b7b5f03f9b845c6ea810b8bce354d351a Mon Sep 17 00:00:00 2001
+From: Meticulus <theonejohnnyd@gmail.com>
+Date: Mon, 13 Nov 2017 10:05:15 -0600
+Subject: [PATCH] "0001-rootdir-don-t-import-init.usb.rc
+ _______________________________
+
+*Previous From 04aec640d3719095a38306c8829e1345b3fee2d2 Mon Sep 17 00:00:00 2001
+*Previous From: Meticulus <theonejohnnyd@gmail.com>
+*Previous Date: Mon, 13 Nov 2017 09:56:00 -0600
+*Previous Subject: [PATCH] rootdir-don't import init.usb.rc.
+*
+*-sets sys.usb.configfs=0 which of course breaks usb
+*for kernels that use configfs.
+*
+*Change-Id: I527003516524ba4dcb8251650e0cc54a192fd14c"
+
+Change-Id: I67ff56b2b0eb16465847c2e7f3262d6245a05302
+---
+ rootdir/init.usb.rc | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/rootdir/init.usb.rc b/rootdir/init.usb.rc
+index 915d159..e135fd6 100644
+--- a/rootdir/init.usb.rc
++++ b/rootdir/init.usb.rc
+@@ -22,8 +22,6 @@ service adbd /sbin/adbd --root_seclabel=u:r:su:s0
+ on property:ro.kernel.qemu=1
+     start adbd
+ 
+-on boot
+-    setprop sys.usb.configfs 0
+ 
+ # Used to disable USB when switching states
+ on property:sys.usb.config=none && property:sys.usb.configfs=0
+-- 
+2.7.4
+

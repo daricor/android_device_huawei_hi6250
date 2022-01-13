@@ -1,0 +1,2 @@
+allow logd properties_device:file r_file_perms;
+allow logd kernel_devicetree:file r_file_perms;

@@ -1,0 +1,2 @@
+allow vdc properties_device:file r_file_perms;
+allow vdc kernel_devicetree:file r_file_perms;

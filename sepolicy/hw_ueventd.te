@@ -1,0 +1,10 @@
+type hw_ueventd, domain;
+type hw_ueventd_exec, exec_type, file_type;
+
+init_daemon_domain(hw_ueventd)
+
+allow hw_ueventd rootfs:file { entrypoint };
+allow hw_ueventd oeminfo_nvm:netlink_kobject_uevent_socket { create setopt bind };
+allow hw_ueventd hw_ueventd:netlink_kobject_uevent_socket create_socket_perms;
+allow hw_ueventd self:capability { net_admin setgid setuid };
+allow hw_ueventd kmsg_device:chr_file rw_file_perms;

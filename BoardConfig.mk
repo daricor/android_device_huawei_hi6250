@@ -78,15 +78,15 @@ TARGET_USES_HISI_DTIMAGE := true
 # Init
 TARGET_INIT_VENDOR_LIB := libhuawei_init
 
-BERLIN_SHIMS := '/hwvendor/lib64/hwcam/hwcam.hi6250.m.BERLIN.so|libshim_libui.so:/hwvendor/lib64/hwcam/hwcam.hi6250.m.BERLIN.so|libshim.so'
-BOND_SHIMS := '/hwvendor/lib64/hwcam/hwcam.hi6250.m.BOND.so|libshim_libui.so:/hwvendor/lib64/hwcam/hwcam.hi6250.m.BOND.so|libshim.so'
-DALLAS_SHIMS := '/hwvendor/lib64/hwcam/hwcam.hi6250.m.DALLAS.so|libshim_libui.so:/hwvendor/lib64/hwcam/hwcam.hi6250.m.DALLAS.so|libshim.so'
-NEMO_SHIMS := '/hwvendor/lib64/hwcam/hwcam.hi6250.m.NEMO.so|libshim_libui.so:/hwvendor/lib64/hwcam/hwcam.hi6250.m.NEMO.so|libshim.so'
-PRAGUE_SHIMS := '/hwvendor/lib64/hwcam/hwcam.hi6250.m.PRAGUE.so|libshim_libui.so:/hwvendor/lib64/hwcam/hwcam.hi6250.m.PRAGUE.so|libshim.so'
-VENUS_SHIMS := '/hwvendor/lib64/hwcam/hwcam.hi6250.m.VENUS.so|libshim_libui.so:/hwvendor/lib64/hwcam/hwcam.hi6250.m.VENUS.so|libshim.so'
-WARSAW_SHIMS := '/hwvendor/lib64/hwcam/hwcam.hi6250.m.WARSAW.so|libshim_libui.so:/hwvendor/lib64/hwcam/hwcam.hi6250.m.WARSAW.so|libshim.so'
+BERLIN_SHIMS := '/vendor/lib64/hwcam/hwcam.hi6250.m.BERLIN.so|libshim_libui.so:/vendor/lib64/hwcam/hwcam.hi6250.m.BERLIN.so|libshim.so'
+BOND_SHIMS := '/vendor/lib64/hwcam/hwcam.hi6250.m.BOND.so|libshim_libui.so:/vendor/lib64/hwcam/hwcam.hi6250.m.BOND.so|libshim.so'
+DALLAS_SHIMS := '/vendor/lib64/hwcam/hwcam.hi6250.m.DALLAS.so|libshim_libui.so:/vendor/lib64/hwcam/hwcam.hi6250.m.DALLAS.so|libshim.so'
+NEMO_SHIMS := '/vendor/lib64/hwcam/hwcam.hi6250.m.NEMO.so|libshim_libui.so:/vendor/lib64/hwcam/hwcam.hi6250.m.NEMO.so|libshim.so'
+PRAGUE_SHIMS := '/vendor/lib64/hwcam/hwcam.hi6250.m.PRAGUE.so|libshim_libui.so:/vendor/lib64/hwcam/hwcam.hi6250.m.PRAGUE.so|libshim.so'
+VENUS_SHIMS := '/vendor/lib64/hwcam/hwcam.hi6250.m.VENUS.so|libshim_libui.so:/vendor/lib64/hwcam/hwcam.hi6250.m.VENUS.so|libshim.so'
+WARSAW_SHIMS := '/vendor/lib64/hwcam/hwcam.hi6250.m.WARSAW.so|libshim_libui.so:/vendor/lib64/hwcam/hwcam.hi6250.m.WARSAW.so|libshim.so'
 
-COMMON_SHIMS := '/hwvendor/lib/hw/audio.primary.hisi.so|libshim.so:/hwvendor/lib64/libcamera_algo.so|libshim_libui.so:/hwvendor/lib64/hw/fingerprint.hi6250.so|libshim.so'
+COMMON_SHIMS := '/vendor/lib/hw/audio.primary.hisi.so|libshim.so:/vendor/lib64/libcamera_algo.so|libshim_libui.so:/vendor/lib64/hw/fingerprint.hi6250.so|libshim.so'
 
 # Linker
 LD_SHIM_LIBS := $(COMMON_SHIMS):$(BERLIN_SHIMS):$(BOND_SHIMS):$(DALLAS_SHIMS):$(NEMO_SHIMS):$(PRAGUE_SHIMS):$(VENUS_SHIMS):$(WARSAW_SHIMS)

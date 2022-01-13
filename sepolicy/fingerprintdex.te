@@ -1,0 +1,8 @@
+allow fingerprintd tee:unix_stream_socket { connectto };
+allow fingerprintd teecd_device:chr_file rw_file_perms;
+allow fingerprintd tee:fd { use };
+allow fingerprintd fingerprint_device:chr_file rw_file_perms;
+allow fingerprintd dmd_device:chr_file rw_file_perms;
+allow fingerprintd sysfs:file rw_file_perms;
+allow fingerprintd properties_device:file r_file_perms;
+allow fingerprintd kernel_devicetree:file r_file_perms;

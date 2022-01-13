@@ -1,0 +1,2 @@
+allow mediaextractor properties_device:file r_file_perms;
+allow mediaextractor kernel_devicetree:file r_file_perms;

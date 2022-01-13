@@ -1,0 +1,15 @@
+type data_cleaner, domain;
+type data_cleaner_exec, exec_type, file_type;
+type hisi_log, file_type;
+
+init_daemon_domain(data_cleaner)
+
+allow data_cleaner hisi_log:dir rw_dir_perms;
+allow data_cleaner hisi_log:file rw_file_perms;
+allow data_cleaner tombstone_data_file:dir rw_dir_perms;
+allow data_cleaner tombstone_data_file:file rw_file_perms;
+allow data_cleaner self:capability { dac_override };
+allow data_cleaner system_data_file:dir rw_dir_perms;
+allow data_cleaner properties_device:file r_file_perms;
+allow data_cleaner kernel_devicetree:file r_file_perms;
+allow data_cleaner system_data_file:file r_file_perms;

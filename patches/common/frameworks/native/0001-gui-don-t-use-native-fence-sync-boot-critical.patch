@@ -1,0 +1,47 @@
+From 5a6fc2df4cf02a4a2ab7065dd71be13762ce6de4 Mon Sep 17 00:00:00 2001
+From: Meticulus <theonejohnnyd@gmail.com>
+Date: Mon, 6 Mar 2017 12:48:36 -0600
+Subject: [PATCH 1/2] gui: don't use native fence sync
+
+Change-Id: Icdfc2cf4dcc423cb12dd2c2b19cf5e1f0fd50da8
+---
+ libs/gui/Android.mk       | 4 ++++
+ libs/gui/SyncFeatures.cpp | 4 ++++
+ 2 files changed, 8 insertions(+)
+
+diff --git a/libs/gui/Android.mk b/libs/gui/Android.mk
+index dff6a37..04a8373 100644
+--- a/libs/gui/Android.mk
++++ b/libs/gui/Android.mk
+@@ -102,6 +102,10 @@ ifeq ($(TARGET_FORCE_SCREENSHOT_CPU_PATH),true)
+ LOCAL_CPPFLAGS += -DFORCE_SCREENSHOT_CPU_PATH
+ endif
+ 
++ifeq ($(BOARD_DONT_USE_NATIVE_FENCE_SYNC),true)
++LOCAL_CPPFLAGS += -DDONT_USE_NATIVE_FENCE_SYNC
++endif
++
+ include $(BUILD_SHARED_LIBRARY)
+ 
+ ifeq (,$(ONE_SHOT_MAKEFILE))
+diff --git a/libs/gui/SyncFeatures.cpp b/libs/gui/SyncFeatures.cpp
+index 187b211..1aff2ae 100644
+--- a/libs/gui/SyncFeatures.cpp
++++ b/libs/gui/SyncFeatures.cpp
+@@ -68,9 +68,13 @@ SyncFeatures::SyncFeatures() : Singleton<SyncFeatures>(),
+ }
+ 
+ bool SyncFeatures::useNativeFenceSync() const {
++#ifdef DONT_USE_NATIVE_FENCE_SYNC
++    return false;
++#else
+     // EGL_ANDROID_native_fence_sync is not compatible with using the
+     // EGL_KHR_fence_sync extension for the same purpose.
+     return mHasNativeFenceSync;
++#endif
+ }
+ bool SyncFeatures::useFenceSync() const {
+ #ifdef DONT_USE_FENCE_SYNC
+-- 
+1.9.1
+

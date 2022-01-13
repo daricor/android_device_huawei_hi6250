@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<permissions>
+    <assign-permission name="android.permission.HW_CAMCFG_SERVICE" uid="1047" />
+</permissions>

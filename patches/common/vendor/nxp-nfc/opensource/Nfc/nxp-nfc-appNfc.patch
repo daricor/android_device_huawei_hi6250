@@ -1,0 +1,57 @@
+From c6954990c30265d3281e7555a550245aaab78c05 Mon Sep 17 00:00:00 2001
+From: Meticulus <theonejohnnyd@gmail.com>
+Date: Mon, 20 Nov 2017 10:33:54 -0600
+Subject: [PATCH] "nxp-nfc-appNfc _______________________________
+
+*Previous From 2aca119da5bc707ce18951c8d3bae3a9e7afd5e2 Mon Sep 17 00:00:00 2001
+*Previous From: Meticulus <theonejohnnyd@gmail.com>
+*Previous Date: Sun, 19 Nov 2017 10:32:56 -0600
+*Previous Subject: [PATCH] "nxp-nfc-appNfc _______________________________
+*
+**Previous From b846659c50bbeb6493d232f3dd0401039cd2068d Mon Sep 17 00:00:00 2001
+**Previous From: Meticulus <theonejohnnyd@gmail.com>
+**Previous Date: Wed, 14 Jun 2017 07:59:11 -0500
+**Previous Subject: [PATCH] "nxp-nfc-appNfc _______________________________
+**
+***Previous From 0b080e85607d088023c818671b2d4d7dee51a524 Mon Sep 17 00:00:00 2001
+***Previous From: Meticulus <theonejohnnyd@gmail.com>
+***Previous Date: Fri, 2 Jun 2017 07:06:38 -0500
+***Previous Subject: [PATCH] nxp-nfc-appNfc
+***
+***Change-Id: I4183ceb54f99bb8912fc7362e098e964d35f3c4a"
+**
+**Change-Id: I4d26be24c08d9aff16ef2866559581e31ccbe363""
+---
+ Android.mk         | 2 +-
+ nci/jni/Android.mk | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Android.mk b/Android.mk
+index 598b14c..6f7658f 100644
+--- a/Android.mk
++++ b/Android.mk
+@@ -23,7 +23,7 @@ LOCAL_JAVA_LIBRARIES := com.nxp.nfc.nq
+ LOCAL_PROGUARD_ENABLED := disabled
+ LOCAL_STATIC_JAVA_LIBRARIES := android-support-v4
+ 
+-LOCAL_PROPRIETARY_MODULE := true
++#LOCAL_PROPRIETARY_MODULE := true
+ LOCAL_MODULE_OWNER := nxp
+ 
+ include $(BUILD_PACKAGE)
+diff --git a/nci/jni/Android.mk b/nci/jni/Android.mk
+index 00198c5..b09adb7 100644
+--- a/nci/jni/Android.mk
++++ b/nci/jni/Android.mk
+@@ -140,7 +140,7 @@ endif
+ 
+ LOCAL_MODULE := libnqnfc_nci_jni
+ LOCAL_MODULE_TAGS := optional
+-LOCAL_PROPRIETARY_MODULE := true
++#LOCAL_PROPRIETARY_MODULE := true
+ LOCAL_MODULE_OWNER := nxp
+ LOCAL_OVERRIDES_PACKAGES := libnfc_nci_jni
+ 
+-- 
+2.7.4
+

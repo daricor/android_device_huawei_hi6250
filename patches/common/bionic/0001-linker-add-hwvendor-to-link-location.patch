@@ -1,0 +1,39 @@
+From 00194a2f67cccea047dcb7e740d06bf6ef81430b Mon Sep 17 00:00:00 2001
+From: Meticulus <theonejohnnyd@gmail.com>
+Date: Thu, 16 Nov 2017 10:50:23 -0600
+Subject: [PATCH] linker: add hwvendor to link location
+
+Change-Id: I9f29c6e22c613dec7f30e91be5e273548821654f
+---
+ linker/linker.cpp | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/linker/linker.cpp b/linker/linker.cpp
+index ef31dae..c83dfeb 100644
+--- a/linker/linker.cpp
++++ b/linker/linker.cpp
+@@ -161,11 +161,13 @@ static soinfo* somain; // main process, always the one after libdl_info
+ #if defined(__LP64__)
+ static const char* const kSystemLibDir     = "/system/lib64";
+ static const char* const kVendorLibDir     = "/vendor/lib64";
++static const char* const kHwVendorLibDir   = "/hwvendor/lib64";
+ static const char* const kAsanSystemLibDir = "/data/lib64";
+ static const char* const kAsanVendorLibDir = "/data/vendor/lib64";
+ #else
+ static const char* const kSystemLibDir     = "/system/lib";
+ static const char* const kVendorLibDir     = "/vendor/lib";
++static const char* const kHwVendorLibDir   = "/hwvendor/lib";
+ static const char* const kAsanSystemLibDir = "/data/lib";
+ static const char* const kAsanVendorLibDir = "/data/vendor/lib";
+ #endif
+@@ -173,6 +175,7 @@ static const char* const kAsanVendorLibDir = "/data/vendor/lib";
+ static const char* const kDefaultLdPaths[] = {
+   kSystemLibDir,
+   kVendorLibDir,
++  kHwVendorLibDir,
+   nullptr
+ };
+ 
+-- 
+2.7.4
+

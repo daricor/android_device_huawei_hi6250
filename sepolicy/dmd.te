@@ -1,0 +1,26 @@
+type device_monitor, domain;
+type device_monitor_exec, exec_type, file_type;
+type dmd_device, dev_type, file_type;
+
+init_daemon_domain(device_monitor)
+
+allow device_monitor socket_device:dir { add_name rw_dir_perms };
+allow device_monitor socket_device:sock_file create_file_perms;
+allow device_monitor hisi_log:dir rw_dir_perms;
+allow device_monitor hisi_log:file { setattr rw_file_perms };
+allow device_monitor shell_exec:file { execute execute_no_trans r_file_perms };
+allow device_monitor init:dir r_dir_perms;
+allow device_monitor init:file r_file_perms;
+allow device_monitor kernel:dir r_dir_perms;
+allow device_monitor kernel:file r_file_perms;
+allow device_monitor ueventd:dir r_dir_perms;
+allow device_monitor ueventd:file r_file_perms;
+allow device_monitor dmd_device:chr_file rw_file_perms;
+allow device_monitor oeminfo_nvm:dir r_dir_perms;
+allow device_monitor oeminfo_nvm:file r_file_perms;
+allow device_monitor logd:dir r_dir_perms;
+allow device_monitor logd:file r_file_perms;
+allow device_monitor vold:dir r_dir_perms;
+allow device_monitor vold:file r_file_perms;
+allow device_monitor rild:dir r_dir_perms;
+
